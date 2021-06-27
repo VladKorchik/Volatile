@@ -1,12 +1,14 @@
 package ru.netology;
 
 public class Main {
-    static volatile boolean switcher = false;
+
 
     public static void main(String[] args) throws InterruptedException {
 
-        Thread user = new UserThread("User");
-        Thread gameBox = new GameBoxThread("Gamebox");
+        Switcher switcher = new Switcher();
+
+        Thread user = new UserThread("User", switcher);
+        Thread gameBox = new GameBoxThread("Gamebox", switcher);
 
         gameBox.start();
         user.start();
