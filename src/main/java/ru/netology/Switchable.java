@@ -1,6 +1,6 @@
 package ru.netology;
 
-public interface ISwitcher {
+public interface Switchable {
 
     public void setStatus(boolean status);
     public boolean getStatus();

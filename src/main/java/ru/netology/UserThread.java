@@ -2,23 +2,23 @@ package ru.netology;
 
 public class UserThread extends Thread {
     private String name;
-    private ISwitcher switcher;
+    private Switchable switcher;
 
-    private final static int waitingTime = 1000;
-    private final static byte quantityOfSwitching = 5;
-    private final static boolean turnOnTheSwitcher = true;
+    private final static int WAITING_TIME = 1000;
+    private final static byte QUANTITY_OF_SWITCHING = 5;
+    private final static boolean TURN_ON_THE_SWITCHER = true;
 
-    public UserThread(String name, ISwitcher switcher) {
+    public UserThread(String name, Switchable switcher) {
         this.name = name;
         this.switcher = switcher;
     }
 
     public void run() {
         try {
-            for (byte i = 0; i < quantityOfSwitching; i++) {
-                Thread.sleep(waitingTime);
+            for (byte i = 0; i < QUANTITY_OF_SWITCHING; i++) {
+                Thread.sleep(WAITING_TIME);
                 if (!switcher.getStatus()) {
-                    switcher.setStatus(turnOnTheSwitcher);
+                    switcher.setStatus(TURN_ON_THE_SWITCHER);
                     System.out.println(name + " turned on the switcher. ");
                 }
             }

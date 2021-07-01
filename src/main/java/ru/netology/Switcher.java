@@ -1,6 +1,6 @@
 package ru.netology;
 
-public class Switcher implements ISwitcher {
+public class Switcher implements Switchable {
     private volatile boolean status = false;
 
     public Switcher() {

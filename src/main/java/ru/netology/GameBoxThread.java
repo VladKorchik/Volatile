@@ -2,12 +2,12 @@ package ru.netology;
 
 public class GameBoxThread extends Thread {
     private String name;
-    private ISwitcher switcher;
+    private Switchable switcher;
 
-    final static int checkingTime = 350;
-    private final static boolean turnOffTheSwitcher = false;
+    final static int CHEKING_TIME = 350;
+    private final static boolean TURN_ON_THE_SWITCHER = false;
 
-    public GameBoxThread(String name, ISwitcher switcher) {
+    public GameBoxThread(String name, Switchable switcher) {
         this.name = name;
         this.switcher = switcher;
     }
@@ -15,7 +15,7 @@ public class GameBoxThread extends Thread {
     public void run() {
         try {
             while (!isInterrupted()) {
-                Thread.sleep(checkingTime);
+                Thread.sleep(CHEKING_TIME);
                 turnOff();
             }
         } catch (InterruptedException exception) {
@@ -28,7 +28,7 @@ public class GameBoxThread extends Thread {
 
     private void turnOff() {
         if (switcher.getStatus()) {
-            switcher.setStatus(turnOffTheSwitcher);
+            switcher.setStatus(TURN_ON_THE_SWITCHER);
             System.out.println(name + " turned off the switcher.");
         }
     }
